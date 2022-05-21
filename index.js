@@ -5,7 +5,6 @@ const app = express();
 const cors = require("cors");
 app.use(cors());
 const Users = require("./models/Users");
-const bcrypt = require("bcrypt");
 const {
   createAccessTokens,
   createRefreshTokens,
@@ -27,12 +26,12 @@ app.get("/auth", validateToken, (req, res) => {
 });
 
 app.post("/login", jsonParser, async (req, res) => {
-  const { email, role, password } = req.body;
+  const { email, password } = req.body;
   const user = await Users.findOne({ where: { email: email } });
   if (!user) {
     res.status(404).json({ error: "User Doesn't Exist" });
-  }else {
-    if(password === user.password){
+  } else {
+    if (password === user.password) {
       const accessToken = createAccessTokens(user);
       const refreshToken = createRefreshTokens(user);
 
@@ -43,34 +42,34 @@ app.post("/login", jsonParser, async (req, res) => {
         email: user.email,
         role: user.role,
       });
-    }else{
+    } else {
       res.status(400).json({ error: "Wrong email and password combination" });
     }
   };
 });
 
 app.post("/refreshToken", async (req, res) => {
-    const refreshToken = req.header("refreshToken");
-    if (!refreshToken) {
-      return res.status(400).json({ error: "Token not found!" });
-    }
-    if (!refreshTokens.includes(refreshToken)) {
-      return res.status(403).json({ error: "Refresh token is not valid" });
-    }
-    try {
-      const user = await verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
-      const accessToken = createAccessTokens(user);
-  
-      res.json({ accessToken });
-    } catch (error) {
-      res.status(403).json({ error: "Invalid token" });
-    }
-  });
+  const refreshToken = req.header("refreshToken");
+  if (!refreshToken) {
+    return res.status(400).json({ error: "Token not found!" });
+  }
+  if (!refreshTokens.includes(refreshToken)) {
+    return res.status(403).json({ error: "Refresh token is not valid" });
+  }
+  try {
+    const user = await verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
+    const accessToken = createAccessTokens(user);
+
+    res.json({ accessToken });
+  } catch (error) {
+    res.status(403).json({ error: "Invalid token" });
+  }
+});
 
 const usersRouter = require("./routes/Users");
 app.use("/users", usersRouter);
-const dostawaRouter = require("./routes/Dostawa");
-app.use("/dostawy", dostawaRouter);
+const raportsRouter = require("./routes/Raports");
+app.use("/raports", raportsRouter);
 
 const port = process.env.PORT || 3001;
 sequelize.sync().then((req) => {

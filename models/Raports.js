@@ -1,8 +1,8 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../util/database");
 
-const Raport = sequelize.define(
-  "raport",
+const Raports = sequelize.define(
+  "raports",
   {
     id_raportu: {
       type: Sequelize.INTEGER,
@@ -10,11 +10,11 @@ const Raport = sequelize.define(
       unique: true,
     },
     data: {
-      type: Sequelize.DATE,
+      type: Sequelize.DATEONLY,
       allowNull: false,
     },
   },
   { timestamps: false }
 );
 
-module.exports = Raport;
+module.exports = Raports;
