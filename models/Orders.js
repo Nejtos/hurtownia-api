@@ -1,8 +1,8 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../util/database");
 
-const Zamowienie = sequelize.define(
-  "zamowienie",
+const Orders = sequelize.define(
+  "orders",
   {
     id_zamowienia: {
       type: Sequelize.INTEGER,
@@ -10,11 +10,15 @@ const Zamowienie = sequelize.define(
       unique: true,
     },
     data: {
-      type: Sequelize.DATE,
+      type: Sequelize.DATEONLY,
+      allowNull: false,
+    },
+    status: {
+      type: Sequelize.BOOLEAN,
       allowNull: false,
     },
   },
   { timestamps: false }
 );
 
-module.exports = Zamowienie;
+module.exports = Orders;

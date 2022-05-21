@@ -26,7 +26,7 @@ app.get("/auth", validateToken, (req, res) => {
 });
 
 app.post("/login", jsonParser, async (req, res) => {
-  const { email, password } = req.body;
+  const { email, role, password } = req.body;
   const user = await Users.findOne({ where: { email: email } });
   if (!user) {
     res.status(404).json({ error: "User Doesn't Exist" });
@@ -70,6 +70,12 @@ const usersRouter = require("./routes/Users");
 app.use("/users", usersRouter);
 const raportsRouter = require("./routes/Raports");
 app.use("/raports", raportsRouter);
+const EmployeesRouter = require("./routes/Employees");
+app.use("/employees", EmployeesRouter);
+const DeliveriesRouter = require("./routes/Deliveries");
+app.use("/deliveries", DeliveriesRouter);
+const OrdersRouter = require("./routes/Orders");
+app.use("/orders", OrdersRouter);
 
 const port = process.env.PORT || 3001;
 sequelize.sync().then((req) => {

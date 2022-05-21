@@ -1,7 +1,8 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../util/database");
 
-const Dostawa = sequelize.define(
+
+const Deliveries = sequelize.define(
   "deliveries",
   {
     id_dostawy: {
@@ -13,8 +14,12 @@ const Dostawa = sequelize.define(
       type: Sequelize.DATEONLY,
       allowNull: false,
     },
+    status: {
+      type: Sequelize.BOOLEAN,
+      allowNull: false,
+    },
   },
   { timestamps: false }
 );
 
-module.exports = Dostawa;
+module.exports = Deliveries;
