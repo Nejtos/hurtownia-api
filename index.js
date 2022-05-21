@@ -66,16 +66,26 @@ app.post("/refreshToken", async (req, res) => {
   }
 });
 
-const usersRouter = require("./routes/Users");
-app.use("/users", usersRouter);
-const raportsRouter = require("./routes/Raports");
-app.use("/raports", raportsRouter);
-const EmployeesRouter = require("./routes/Employees");
-app.use("/employees", EmployeesRouter);
+const categoriesRouter = require("./routes/Categories");
+app.use("/categories", categoriesRouter);
 const DeliveriesRouter = require("./routes/Deliveries");
 app.use("/deliveries", DeliveriesRouter);
+const ElementsRouter = require("./routes/Elements");
+app.use("/elements", ElementsRouter);
+const EmployeesRouter = require("./routes/Employees");
+app.use("/employees", EmployeesRouter);
 const OrdersRouter = require("./routes/Orders");
 app.use("/orders", OrdersRouter);
+const PlacesRouter = require("./routes/Places");
+app.use("/places", PlacesRouter);
+const ProducentsRouter = require("./routes/Producents");
+app.use("/producents", ProducentsRouter);
+const ProductsRouter = require("./routes/Products");
+app.use("/products", ProductsRouter);
+const raportsRouter = require("./routes/Raports");
+app.use("/raports", raportsRouter);
+const usersRouter = require("./routes/Users");
+app.use("/users", usersRouter);
 
 const port = process.env.PORT || 3001;
 sequelize.sync().then((req) => {

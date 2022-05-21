@@ -1,8 +1,8 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../util/database");
 
-const Kategoria = sequelize.define(
-  "kategoria",
+const Categories = sequelize.define(
+  "categories",
   {
     id_kategorii: {
       type: Sequelize.INTEGER,
@@ -17,4 +17,4 @@ const Kategoria = sequelize.define(
   { timestamps: false }
 );
 
-module.exports = Kategoria;
+module.exports = Categories;

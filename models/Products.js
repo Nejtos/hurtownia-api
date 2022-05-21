@@ -1,8 +1,8 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../util/database");
 
-const Produkt = sequelize.define(
-  "produkt",
+const Products = sequelize.define(
+  "products",
   {
     id_produktu: {
       type: Sequelize.INTEGER,
@@ -10,7 +10,7 @@ const Produkt = sequelize.define(
       unique: true,
     },
     nr_partii: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
     },
     ilosc: {
@@ -18,11 +18,11 @@ const Produkt = sequelize.define(
         allowNull: false,
     },
     data_waznosci: {
-      type: Sequelize.DATE,
+      type: Sequelize.DATEONLY,
       allowNull: false,
     },
   },
   { timestamps: false }
 );
 
-module.exports = Produkt;
+module.exports = Products;

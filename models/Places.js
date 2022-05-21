@@ -1,28 +1,31 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../util/database");
 
-const Element = sequelize.define(
-  "element",
+const Places = sequelize.define(
+  "places",
   {
-    id_elementu: {
+    id_miejsca: {
       type: Sequelize.INTEGER,
       allowNull: false,
       unique: true,
     },
-    nazwa_elementu: {
-      type: Sequelize.STRING,
+    rzad: {
+      type: Sequelize.INTEGER,
       allowNull: false,
+      unique: true,
     },
-    id_kategorii: {
+    kolumna: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        unique: true,
     },
-    id_miejsca: {
-        type: Sequelize.INTEGER,
+    status: {
+        type: Sequelize.STRING,
         allowNull: false,
+        unique: true,
     },
   },
   { timestamps: false }
 );
 
-module.exports = Element;
+module.exports = Places;

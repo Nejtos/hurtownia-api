@@ -1,21 +1,20 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../util/database");
 
-const Producent = sequelize.define(
-  "producent",
+const Elements = sequelize.define(
+  "elements",
   {
-    id_producenta: {
+    id_elementu: {
       type: Sequelize.INTEGER,
       allowNull: false,
       unique: true,
     },
-    nazwa_producenta: {
+    nazwa_elementu: {
       type: Sequelize.STRING,
       allowNull: false,
-      unique: true,
     },
   },
   { timestamps: false }
 );
 
-module.exports = Producent;
+module.exports = Elements;
