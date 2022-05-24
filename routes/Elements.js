@@ -27,15 +27,15 @@ router.post("/create", jsonParser, (req, res) => {
 router.post("/delete", jsonParser, (req, res) => {
   const { id_elementu, status } = req.body;
   if(status === "Tak"){
-    Elements.destroy({ where: { id_elementu: id_elementu } });
-    // .then(() => {
-    //   res.json("Deleted element");
-    // })
-    // .catch((err) => {
-    //   if (err) {
-    //     res.status(400).json({ error: err });
-    //   }
-    // });
+    Elements.destroy({ where: { id_elementu: id_elementu } })
+    .then(() => {
+        res.json("Delete element");
+    })
+    .catch((err) => {
+    if (err) {
+        res.status(400).json({ error: err });
+    }
+    });
   }
 });
 
