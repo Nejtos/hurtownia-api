@@ -24,6 +24,19 @@ router.post("/create", jsonParser, (req, res) => {
     });
 });
 
+router.post("/edit", jsonParser, (req, res) => {
+  console.log(req.body)
+  Elements.update({ id_elementu: req.body.id_elementu, nazwa_elementu: req.body.nazwa_elementu}, {where: { id: req.body.id }})
+  .then(() => {
+      res.json("Edit element");
+  })
+  .catch((err) => {
+    if (err) {
+      res.status(400).json({ error: err });
+    }
+  });
+});
+
 router.post("/delete", jsonParser, (req, res) => {
   const { id_elementu, status } = req.body;
   if(status === "Tak"){
