@@ -9,16 +9,28 @@ const Products = sequelize.define(
       allowNull: false,
       unique: true,
     },
+    nazwa_kategorii: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    nazwa_elementu: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    nazwa_producenta: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
     nr_partii: {
         type: Sequelize.STRING,
         allowNull: false,
     },
-    ilosc: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-    },
     data_waznosci: {
       type: Sequelize.DATEONLY,
+      allowNull: false,
+    },
+    ilosc: {
+      type: Sequelize.INTEGER,
       allowNull: false,
     },
   },
