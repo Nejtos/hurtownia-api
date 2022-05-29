@@ -8,13 +8,11 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/update", async (req, res) => {
-  const values = {
-    id_dostawy: req.body.id_dostawy,
-    // data: req.body.deliveries.data,
+  const value = {
     status: req.body.status,
   };
-  await Deliveries.update(values, {
-    where: { id_dostawy: req.body.id_dostawy },
+  await Deliveries.update(value, {
+    where: { id: req.body.id },
   });
 });
 

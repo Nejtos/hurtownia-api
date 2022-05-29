@@ -74,6 +74,8 @@ const ElementsRouter = require("./routes/Elements");
 app.use("/elements", ElementsRouter);
 const EmployeesRouter = require("./routes/Employees");
 app.use("/employees", EmployeesRouter);
+const itemsRouter = require("./routes/Items");
+app.use("/items", itemsRouter);
 const OrdersRouter = require("./routes/Orders");
 app.use("/orders", OrdersRouter);
 const PlacesRouter = require("./routes/Places");
@@ -84,6 +86,8 @@ const ProductsRouter = require("./routes/Products");
 app.use("/products", ProductsRouter);
 const raportsRouter = require("./routes/Raports");
 app.use("/raports", raportsRouter);
+const raportsRowsRouter = require("./routes/RaportsRows");
+app.use("/raportsrows", raportsRowsRouter)
 const usersRouter = require("./routes/Users");
 app.use("/users", usersRouter);
 
