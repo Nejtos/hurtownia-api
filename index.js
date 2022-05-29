@@ -87,7 +87,7 @@ app.use("/products", ProductsRouter);
 const raportsRouter = require("./routes/Raports");
 app.use("/raports", raportsRouter);
 const raportsRowsRouter = require("./routes/RaportsRows");
-app.use("/raportsrows", raportsRowsRouter)
+app.use("/raportsrows", raportsRowsRouter);
 const usersRouter = require("./routes/Users");
 app.use("/users", usersRouter);
 
