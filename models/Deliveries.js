@@ -1,5 +1,6 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../util/database");
+const DeliveriesRows = require("./DeliveriesRows");
 
 
 const Deliveries = sequelize.define(
@@ -7,6 +8,7 @@ const Deliveries = sequelize.define(
   {
     id_dostawy: {
       type: Sequelize.INTEGER,
+      primaryKey: true,
       allowNull: false,
       unique: true,
     },
@@ -21,5 +23,10 @@ const Deliveries = sequelize.define(
   },
   { timestamps: false }
 );
+
+Deliveries.hasMany(DeliveriesRows, {
+  foreignKey: 'id_dostawy',
+  as: 'deliveriesrows',
+});
 
 module.exports = Deliveries;

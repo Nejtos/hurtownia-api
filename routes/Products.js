@@ -12,6 +12,11 @@ router.get("/", async (req, res) => {
   res.json(listofProducts);
 });
 
+router.get("/:productID", async(req, res) => {
+  const productInfo = await Products.findOne({where: { id_produktu: req.params.productID}});
+  res.json(productInfo);
+})
+
 router.post("/create", jsonParser, (req, res) => {
   const { id_produktu, nazwa_kategorii, nazwa_elementu, nazwa_producenta, nr_partii, data_waznosci, ilosc } = req.body;
   Products.create({
